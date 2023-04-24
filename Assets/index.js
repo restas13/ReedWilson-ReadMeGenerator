@@ -24,9 +24,10 @@ inquirer.prompt([
         name: 'Usage',
     },
     {
-        type: 'select',
+        type: 'checkbox',
         message: 'What license is used for this project?',
-        choices: ['license1', 'license2', 'license3', 'none'],
+        choices: ['GNU AGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'None'],
+        default: 'None',
         name: 'license',
     },
     {
@@ -45,15 +46,16 @@ inquirer.prompt([
         name: 'github',
     },
 ]).then((response) => {
-    fs.writeFile('readme.md', 
+    fs.writeFile('README.md', 
     `# ${response.Project}
+[![Generic badge](https://img.shields.io/badge/License-${response.license}-blue.svg)](https://shields.io/)
 >## Table of Contents
-* [Description]()
-* [Installation]()
-* [Usage]()
-* [Contributing]()
-* [Tests]()
-* [Questions]()
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 >## Description
 ${response.Description}
 >## Installation
@@ -63,8 +65,9 @@ ${response.Description}
 >## Contributing
 ${response.Contribution}
 >## Tests
-
->## Questions`
+Testing and adding features should be pushed to a branch separate from the main to avoid creating unwanted error and/or bugs.
+>## Questions
+Any questions? contact me thorugh [email](${response.email}), or through my [github](${response.github})`
     , (error) => {
         error ? console.log(error) : console.log('your readme has been written!');
     })
