@@ -26,7 +26,7 @@ inquirer.prompt([
     {
         type: 'checkbox',
         message: 'What license is used for this project?',
-        choices: ['GNU AGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'None'],
+        choices: ['GNU_AGPLv3', 'Mozilla_Public_License_2.0', 'Apache_License_2.0', 'MIT_License', 'None'],
         default: 'None',
         name: 'license',
     },
@@ -48,7 +48,7 @@ inquirer.prompt([
 ]).then((response) => {
     fs.writeFile('README.md', 
     `# ${response.Project}
-[![Generic badge](https://img.shields.io/badge/License-${response.license}-blue.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/License-<${response.license}>-blue.svg)](https://shields.io/)
 >## Table of Contents
 * [Description](#description)
 * [Installation](#installation)
